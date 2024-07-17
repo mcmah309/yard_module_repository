@@ -1,4 +1,4 @@
-FROM alpine:{{ "" | default (value="latest") }}
+FROM alpine:{{ version | default (value="latest") }}
 
 RUN apk update \
     && apk upgrade \

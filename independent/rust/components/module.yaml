@@ -1,0 +1,5 @@
+description: "Rust components like rustfmt"
+args:
+  required:
+  optional:
+    - components

@@ -1,0 +1,4 @@
+description: "Base rust module"
+args:
+  required:
+  optional:
