@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:{{ "" | default (value="latest") }}
 
 RUN apt-get update \
     && apt-get upgrade -y \
