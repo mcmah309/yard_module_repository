@@ -1,0 +1,2 @@
+COPY ./setup_bash.sh /tmp/
+RUN chmod +x /tmp/setup_bash.sh && /tmp/setup_bash.sh && rm /tmp/setup_bash.sh

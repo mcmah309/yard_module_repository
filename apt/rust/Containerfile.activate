@@ -1,0 +1,1 @@
+RUN cargo install --git https://github.com/mcmah309/activate.git --tag v0.3.0

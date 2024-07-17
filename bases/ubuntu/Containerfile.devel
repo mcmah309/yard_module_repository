@@ -1,0 +1,6 @@
+FROM ubuntu:devel
+
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends --no-install-suggests ca-certificates \
+    && update-ca-certificates
