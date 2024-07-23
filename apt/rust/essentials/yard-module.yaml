@@ -1,4 +1,1 @@
 description: "Essential rust packages adjacent like openssl"
-args:
-  required:
-  optional:

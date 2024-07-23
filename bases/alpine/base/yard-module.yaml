@@ -1,5 +1,4 @@
 description: "Base alpine module. Should be the first module in the list."
 args:
-  required:
   optional:
     - version
