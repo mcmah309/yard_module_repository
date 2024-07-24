@@ -1,4 +1,4 @@
-ARG flutter_ver=3.22.2
+ARG flutter_ver={{ flutter_version | default (value="3.22.3") }}
 
 ## Set environment variables
 ENV FLUTTER_HOME=/usr/local/flutter

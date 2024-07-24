@@ -7,9 +7,9 @@ FROM thyrlian/android-sdk:latest
 
 ## For all the config below using "latest" is also valid
 # https://developer.android.com/tools/releases/platforms
-ARG android_platform=android-34
+ARG android_platform={{ android_platform | default (value="android-34") }}
 # https://developer.android.com/t6ools/releases/build-tools
-ARG android_build_tools=34.0.0
+ARG android_build_tools={{ android_build_tools | default (value="34.0.0") }}
 
 # Update the SDK manager and install necessary Android SDK components https://developer.android.com/tools/sdkmanager
 RUN sdkmanager --update \
