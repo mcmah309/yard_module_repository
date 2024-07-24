@@ -1,1 +1,5 @@
 description: "Configure git"
+args:
+  required:
+    - user_name
+    - email

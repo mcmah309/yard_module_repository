@@ -1,4 +1,4 @@
-RUN git config --global user.name mcmah309 && \
-    git config --global user.email dillonmcmahon79@gmail.com
+RUN git config --global user.name {{ user_name }} && \
+    git config --global user.email {{ email }}
 
 VOLUME /root/.ssh
