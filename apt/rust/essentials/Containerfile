@@ -1,4 +1,5 @@
 # libssl-dev: Needed for openssl certificates (may need to add the pkg files to PKG_CONFIG_PATH)
 # libasound2-dev: Needed for alsa (may need to add the pkg files to PKG_CONFIG_PATH)
-RUN apt-get update && apt install -y libssl-dev libasound2-dev
+# pkg-config: Quering local libraries for compilation. Needed by rustc.
+RUN apt-get update && apt install -y libssl-dev libasound2-dev pkg-config
 
