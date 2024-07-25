@@ -1,7 +1,3 @@
-### Android
-# https://github.com/thyrlian/AndroidSDK
-FROM thyrlian/android-sdk:latest
-
 # https://docs.flutter.dev/reference/supported-platforms
 # https://developer.android.com/tools/releases/platform-tools
 
