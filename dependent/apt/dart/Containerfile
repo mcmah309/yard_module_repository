@@ -1,6 +1,9 @@
 # https://dart.dev/get-dart#install-a-debian-package
+
+ARG dart_ver={{ dart_version | default (value="3.5.0") }}
+
 RUN apt install wget -y
-RUN wget https://storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_3.3.3-1_amd64.deb
-RUN dpkg -i dart_3.3.3-1_amd64.deb
+RUN wget https://storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_${dart_ver}-1_amd64.deb
+RUN dpkg -i dart_${dart_ver}-1_amd64.deb
 RUN apt install -f -y
-RUN rm dart_3.3.3-1_amd64.deb
+RUN rm dart_${dart_ver}-1_amd64.deb
