@@ -1,5 +1,5 @@
 ARG flutter_ver={{ flutter_version | default (value="3.22.3") }}
-ARG dart_version={{ dart_version | default (value="3.5.3") }}
+ARG dart_ver={{ dart_version | default (value="3.5.3") }}
 
 ## Install seperate Dart version
 
