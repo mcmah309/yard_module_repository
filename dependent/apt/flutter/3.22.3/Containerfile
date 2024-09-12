@@ -88,17 +88,3 @@ RUN ORIGINAL_CHROME_PATH=$(which google-chrome) && \
 ## Need for packages
 # Needed by path provider find the write paths for the linux os
 Run apt-get install xdg-user-dirs
-
-## Install seperate dart version if specified
-
-{% if dart_version and dart_version != "" %}
-ARG dart_ver={{ dart_version }}
-
-RUN apt install wget -y
-RUN wget https://storage.googleapis.com/dart-archive/channels/stable/release/${dart_ver}/linux_packages/dart_${dart_ver}-1_amd64.deb \
-    && dpkg-deb -x dart_${dart_ver}-1_amd64.deb dart_tmp \
-    && rm -fr ${FLUTTER_HOME}/bin/cache/dart-sdk/* \
-    && mv dart_tmp/usr/lib/dart/* ${FLUTTER_HOME}/bin/cache/dart-sdk \
-    && rm -rf dart_tmp \
-    && rm dart_${dart_ver}-1_amd64.deb
-{% endif %}
