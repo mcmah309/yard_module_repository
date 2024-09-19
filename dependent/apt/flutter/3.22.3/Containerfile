@@ -2,7 +2,7 @@ ARG flutter_ver={{ flutter_version | default (value="3.22.3") }}
 
 ## Set environment variables
 ENV FLUTTER_HOME=/usr/local/flutter
-ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
+ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin:${HOME}/.pub-cache/bin
 
 RUN mkdir -p $FLUTTER_HOME
 ## Base linux config
