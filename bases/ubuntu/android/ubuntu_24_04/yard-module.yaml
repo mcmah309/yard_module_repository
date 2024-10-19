@@ -1,8 +1,3 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
 description: "Base android image on ubuntu 24.04"
-required_files:
-  - license_accepter.sh
-  - sshd-banner
-  - supervisord.conf
-  - version_inspector.sh
