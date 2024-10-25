@@ -1,0 +1,19 @@
+# Podman in Podman
+# Tips:
+# - Run outer with with `--privileged`
+# Known issues: 
+# - some containers may need args like `--net=host` on the inside and outside container
+
+
+RUN apt install podman && \
+sudo tee /etc/containers/registries.conf > /dev/null <<EOF
+[registries]
+[registries.block]
+registries = []
+
+[registries.insecure]
+registries = []
+
+[registries.search]
+registries = ["docker.io", "quay.io"]
+EOF
