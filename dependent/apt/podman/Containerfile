@@ -17,3 +17,6 @@ registries = []
 [registries.search]
 registries = ["docker.io", "quay.io"]
 EOF
+
+# Root podman containers location. (For users ~/.local/share/containers)
+VOLUME /var/lib/containers
