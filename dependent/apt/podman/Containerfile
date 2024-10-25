@@ -6,7 +6,7 @@
 
 
 RUN apt install podman && \
-sudo tee /etc/containers/registries.conf > /dev/null <<EOF
+tee /etc/containers/registries.conf > /dev/null <<EOF
 [registries]
 [registries.block]
 registries = []
