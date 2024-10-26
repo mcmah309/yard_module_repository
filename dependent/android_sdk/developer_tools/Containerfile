@@ -4,11 +4,11 @@
 ## For all the latest configs use `sdkmanager --list`
 
 # https://developer.android.com/tools/releases/platforms
-# e.g. "android-35"
-ARG android_platform={{ android_platform | default (value="android-35") }} 
+# e.g. "android-34"
+ARG android_platform={{ android_platform | default (value="android-34") }} 
 # https://developer.android.com/tools/releases/build-tools
-# e.g. "35.0.0"
-ARG android_build_tools={{ android_build_tools | default (value="35.0.0") }}
+# e.g. "34.0.0"
+ARG android_build_tools={{ android_build_tools | default (value="34.0.0") }}
 
 # Update the SDK manager and install necessary Android SDK components https://developer.android.com/tools/sdkmanager
 RUN sdkmanager --update \
