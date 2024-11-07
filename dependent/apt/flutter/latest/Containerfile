@@ -6,9 +6,11 @@ ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin:${HO
 # Needed for linux, sets x11 to use the first display, use `export GDK_BACKEND=wayland` to use wayland
 ENV DISPLAY=:0
 
-# debugging on real device
 {% if include_volumes %}
-VOLUME /dev/bus/usb /root/.pub-cache
+# debugging on real device
+VOLUME /dev/bus/usb \
+# Dart pub cache
+/root/.pub-cache
 {% endif %}
 
 RUN mkdir -p $FLUTTER_HOME \
