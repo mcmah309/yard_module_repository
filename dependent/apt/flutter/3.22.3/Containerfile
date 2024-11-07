@@ -66,9 +66,9 @@ RUN flutter precache --universal \
 RUN yes | flutter doctor --android-licenses
 
 # debugging on real device
-VOLUME /dev/bus/usb
-
-VOLUME /root/.pub-cache
+{% if include_volumes %}
+VOLUME /dev/bus/usb /root/.pub-cache
+{% endif %}
 
 ## Linux
 # Needed for linux, sets x11 to use the first display, use `export GDK_BACKEND=wayland` to use wayland

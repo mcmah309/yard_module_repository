@@ -7,9 +7,9 @@ ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin:${HO
 ENV DISPLAY=:0
 
 # debugging on real device
-VOLUME /dev/bus/usb
-# Dart
-VOLUME /root/.pub-cache
+{% if include_volumes %}
+VOLUME /dev/bus/usb /root/.pub-cache
+{% endif %}
 
 RUN mkdir -p $FLUTTER_HOME \
 ## Base linux config

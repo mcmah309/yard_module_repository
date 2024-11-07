@@ -39,5 +39,6 @@ RUN set -eux; \
     # Make sure to remove trailing `\` when you copy over a new version.
     # rm -rf /var/lib/apt/lists/*;
 
-    VOLUME /usr/local/rustup \
-    /usr/local/cargo
+{% if include_volumes %}
+VOLUME /usr/local/rustup /usr/local/cargo
+{% endif %}

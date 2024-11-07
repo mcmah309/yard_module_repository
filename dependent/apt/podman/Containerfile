@@ -19,4 +19,6 @@ registries = ["docker.io", "quay.io"]
 EOF
 
 # Root podman containers location. (For users ~/.local/share/containers)
+{% if include_volumes %}
 VOLUME /var/lib/containers
+{% endif %}

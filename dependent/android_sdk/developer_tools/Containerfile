@@ -28,4 +28,6 @@ RUN sdkmanager --update \
         # Install the latest version of CMake. Cant use "latest" here
         #"cmake;3.22.1"
 
+{% if include_volumes %}
 VOLUME ["/root/.gradle/caches", "/opt/android-sdk"]
+{% endif %}
