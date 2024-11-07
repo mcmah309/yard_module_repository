@@ -1,1 +1,1 @@
-RUN cargo install activate
+RUN cargo install activate {% if add_bashrc_shortcut %} && echo 'a() { eval "$(activate -e "$@")"; }' >> ~/.bashrc {% endif %}
