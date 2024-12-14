@@ -1,1 +1,0 @@
-RUN rustup component add {{ components | default (value="rustfmt") }}

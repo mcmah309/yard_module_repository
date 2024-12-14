@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
-
-description: "Base ubuntu module. Should be the first module in the list."
-args:
-  optional:
-    - version

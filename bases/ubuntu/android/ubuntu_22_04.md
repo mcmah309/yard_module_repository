@@ -1,0 +1,15 @@
+```yaml
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
+
+description: "Base android image on ubuntu 22.04"
+```
+```Dockerfile
+### Android
+# https://github.com/thyrlian/AndroidSDK
+FROM thyrlian/android-sdk:9.3
+
+RUN apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends --no-install-suggests ca-certificates \
+    && update-ca-certificates
+```
