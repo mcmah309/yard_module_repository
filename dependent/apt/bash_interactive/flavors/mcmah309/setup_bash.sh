@@ -1,12 +1,11 @@
-#!/bin/sh
-set -e
-set -u
+#!/usr/bin/env bash 
+set -euo pipefail
 
 touch /root/.bash_history
 
 apt-get install -y bsdmainutils
-
 apt-get install -y hstr
+apt-get install -y direnv
 
 cat > "/root/.bashrc" <<- 'EOM'
 # ensure synchronization between bash memory and history file
@@ -35,4 +34,6 @@ if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
 export HSTR_TIOCSTI=y
 
 alias l='ls -lah'
+
+eval "$(direnv hook bash)"
 EOM
