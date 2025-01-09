@@ -6,6 +6,7 @@ touch /root/.bash_history
 apt-get install -y bsdmainutils
 apt-get install -y hstr
 apt-get install -y direnv
+apt-get install -y fdfind
 
 cat > "/root/.bashrc" <<- 'EOM'
 # ensure synchronization between bash memory and history file
@@ -34,6 +35,12 @@ if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
 export HSTR_TIOCSTI=y
 
 alias l='ls -lah'
+alias fd=fdfind
 
 eval "$(direnv hook bash)"
+
+# activate shortcust
+a() {
+    eval "$(activate -e "$@")";
+}
 EOM
