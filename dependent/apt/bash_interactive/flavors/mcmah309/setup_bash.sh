@@ -6,7 +6,7 @@ touch /root/.bash_history
 apt-get install -y bsdmainutils
 apt-get install -y hstr
 apt-get install -y direnv
-apt-get install -y fdfind
+apt-get install -y fd-find
 
 cat > "/root/.bashrc" <<- 'EOM'
 # ensure synchronization between bash memory and history file
