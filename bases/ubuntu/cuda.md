@@ -1,13 +1,10 @@
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
-description: "Base ubuntu module."
-args:
-  optional:
-    - version
+description: "Ubuntu module with cuda."
 ```
 ```Dockerfile
-FROM ubuntu:{{ version | default (value="latest") }}
+FROM nvidia/cuda:12.6.3-cudnn-devel-ubuntu24.04
 
 RUN apt-get update -y \
     && apt-get upgrade -y \
