@@ -3,10 +3,19 @@ set -euo pipefail
 
 touch /root/.bash_history
 
-apt-get install -y bsdmainutils
+# PS1
+apt-get install -y bsdmainutils # colrm
 apt-get install -y hstr
+# History
 apt-get install -y direnv
+# Cli tools
 apt-get install -y fd-find
+apt-get install -y sd
+apt-get install -y bat
+apt-get install -y ripgrep
+apt-get install -y fzf
+apt-get install -y curl
+apt-get install -y hurl
 
 cat > "/root/.bashrc" <<- 'EOM'
 # ensure synchronization between bash memory and history file

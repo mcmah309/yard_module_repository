@@ -1,7 +1,7 @@
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
-description: "bash interactive module with mcmah309 flavor"
+description: "bash interactive module with mcmah309 flavor and useful tools"
 required_files:
   - setup_bash.sh
 ```
