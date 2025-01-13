@@ -20,7 +20,21 @@ apt-get install -y hurl
 cat > "/root/.bashrc" <<- 'EOM'
 # ensure synchronization between bash memory and history file
 export PROMPT_COMMAND="history -a; history -n; export HISTFILE=/root/.bash_history"
-shopt -s histappend              # append new history items to .bash_history
+
+shopt -s histappend # history list is appended to the file named by the value of the HISTFILE variable when the shell exits, rather than overwriting the file
+shopt -s cmdhist # Saves multi-line commands in the history as a single entry, instead of splitting them into multiple lines.
+shopt -s checkwinsize # checks the window size after each external (non-builtin) command and, if necessary, updates the values of LINES and COLUMNS
+shopt -s globstar # Enables the ** globbing operator
+shopt -s checkjobs # Check if background jobs have completed before exiting the shell
+shopt -s nullglob # When a pattern like *.txt doesn’t match any files, it expands to an empty list instead of the literal string *.txt
+shopt -s dotglob # Globbing matches dotfiles (hidden files), no need for 'mv * .* <>' just 'mv * <>'
+shopt -s globstar # Enable ** to match directories recursively
+shopt -s extglob # Enables extended pattern matching features in globbing
+shopt -s nocaseglob # Makes globing is case insenstive
+shopt -s nocasematch  # Enable case-insensitive matching, e.g. `[[ $filename == *.pdf ]]` also matches `.PDF`
+shopt -s expand_aliases # Allow aliases in non-interactive (scripts)
+# shopt -s sourcepath # Allow searching PATH for `source ...` when a script cannot be found
+
 
 function git_branch() {
     branch=$(git branch 2>/dev/null | grep '^*' | colrm 1 2 || echo "")
