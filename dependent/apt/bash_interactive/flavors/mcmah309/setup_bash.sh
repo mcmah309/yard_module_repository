@@ -15,7 +15,6 @@ apt-get install -y bat
 apt-get install -y ripgrep
 apt-get install -y fzf
 apt-get install -y curl
-apt-get install -y hurl
 
 cat > "/root/.bashrc" <<- 'EOM'
 # ensure synchronization between bash memory and history file
