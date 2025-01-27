@@ -13,5 +13,6 @@ RUN apt install -y build-essential libssl-dev pkg-config curl \
     {% else %}
     && curl -LsSf https://astral.sh/uv/install.sh | sh \
     {% endif %}
+    && . $HOME/.local/bin/env \
     && uv tool install mypy
 ```
