@@ -8,7 +8,7 @@ args:
     - include_volumes
 ```
 ```Dockerfile
-ARG flutter_ver={{ flutter_version | default (value="3.27.1") }}
+ARG flutter_ver={{ flutter_version | default (value="3.27.3") }}
 
 ## Set environment variables
 ENV FLUTTER_HOME=/usr/local/flutter
