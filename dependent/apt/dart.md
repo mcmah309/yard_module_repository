@@ -10,7 +10,7 @@ args:
 ```Dockerfile
 # https://dart.dev/get-dart#install-a-debian-package
 
-ARG dart_ver={{ dart_version | default (value="3.5.2") }}
+ARG dart_ver={{ dart_version | default (value="3.6.2") }}
 
 RUN apt install wget -y \
     && wget https://storage.googleapis.com/dart-archive/channels/{{ channel | default (value="stable") }}/release/${dart_ver}/linux_packages/dart_${dart_ver}-1_amd64.deb \
