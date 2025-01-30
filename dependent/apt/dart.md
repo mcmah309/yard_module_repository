@@ -18,5 +18,5 @@ RUN apt install wget -y \
     && apt install -f -y \
     && rm dart_${dart_ver}-1_amd64.deb
 
-ENV PATH="$PATH:$HOME/.pub-cache/bin"
+ENV PATH ${PATH}:/root/.pub-cache/bin
 ```

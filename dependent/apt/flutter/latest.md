@@ -12,7 +12,8 @@ ARG flutter_ver={{ flutter_version | default (value="3.27.3") }}
 
 ## Set environment variables
 ENV FLUTTER_HOME=/usr/local/flutter
-ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin:${HOME}/.pub-cache/bin
+ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin:/root/.pub-cache/bin
+
 # Needed for linux, sets x11 to use the first display, use `export GDK_BACKEND=wayland` to use wayland
 ENV DISPLAY=:0
 
