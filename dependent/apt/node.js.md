@@ -8,8 +8,12 @@ args:
 ```
 ```Dockerfile
 RUN \
+    apt-get install -y curl \
     # set to 4, 5, 6, ... as needed
-    v={{ version | default (value="20") }} \
-    && curl -sL https://deb.nodesource.com/setup_$v.x | bash - \
+    {% if version %}
+        && curl -sL https://deb.nodesource.com/setup_{{ version }}.x | bash - \
+    {% else %}
+        && curl -sL https://deb.nodesource.com/setup | bash - \
+    {% endif %}
     && apt-get install -y nodejs
 ```
