@@ -5,8 +5,9 @@ touch /root/.bash_history
 
 # PS1
 apt-get install -y bsdmainutils # colrm
-apt-get install -y hstr
 # History
+apt-get install -y hstr
+# Env
 apt-get install -y direnv
 # Cli tools
 apt-get install -y fd-find
