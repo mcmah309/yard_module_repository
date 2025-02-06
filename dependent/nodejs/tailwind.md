@@ -4,7 +4,7 @@
 description: "Tailwind cli"
 ```
 ```Dockerfile
-RUN npm install tailwindcss @tailwindcss/cli
+RUN npm install -g tailwindcss @tailwindcss/cli
 ```
 
 https://tailwindcss.com/docs/installation/tailwind-cli
