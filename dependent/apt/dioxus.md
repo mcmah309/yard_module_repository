@@ -1,7 +1,7 @@
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
-description: "Dioxus"
+description: "Dioxus. Also depends on cargo being installed."
 ```
 ```Dockerfile
 # From: https://dioxuslabs.com/learn/0.6/getting_started
