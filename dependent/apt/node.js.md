@@ -12,5 +12,8 @@ RUN \
     # set to 4, 5, 6, ... as needed
     && v={{ version | default (value="23") }} \
     && curl -sL https://deb.nodesource.com/setup_$v.x | bash - \
-    && apt-get install -y nodejs
+    && apt-get install -y nodejs \
+    && node -v \
+    && npm -v \
+    && npx -v
 ```
