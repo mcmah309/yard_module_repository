@@ -8,3 +8,10 @@ RUN npm install -g tailwindcss @tailwindcss/cli
 ```
 
 https://tailwindcss.com/docs/installation/tailwind-cli
+
+Note: tailwind v4 requires each project to install it's own tailwind
+```bash
+npm install tailwindcss @tailwindcss/cli
+```
+
+Daisy install: https://daisyui.com/docs/install/
