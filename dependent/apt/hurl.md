@@ -7,7 +7,7 @@ args:
         - version
 ```
 ```Dockerfile
-RUN apt update && \
+RUN apt-get update -y && apt-get upgrade -y && \
 VERSION={{ version | default (value="6.0.0") }} && \
 curl --location --remote-name https://github.com/Orange-OpenSource/hurl/releases/download/$VERSION/hurl_${VERSION}_amd64.deb && \
 apt install ./hurl_${VERSION}_amd64.deb && \

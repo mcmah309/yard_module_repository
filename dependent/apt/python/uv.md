@@ -7,7 +7,7 @@ args:
         - version # e.g. 0.5.18
 ```
 ```Dockerfile
-RUN apt install -y build-essential libssl-dev pkg-config curl \
+RUN apt-get update -y && apt-get upgrade -y && apt install -y build-essential libssl-dev pkg-config curl \
     {% if version %}
     && curl -LsSf https://astral.sh/uv/{{ version }}/install.sh | sh \
     {% else %}

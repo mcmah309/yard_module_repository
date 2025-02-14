@@ -3,6 +3,7 @@ set -euo pipefail
 
 touch /root/.bash_history
 
+apt-get update -y && apt-get upgrade -y
 # PS1
 apt-get install -y bsdmainutils # colrm
 # History

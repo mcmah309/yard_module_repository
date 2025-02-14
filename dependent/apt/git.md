@@ -4,5 +4,5 @@
 description: "git module"
 ```
 ```Dockerfile
-RUN apt install -y git
+RUN apt-get update -y && apt-get upgrade -y && apt install -y git
 ```

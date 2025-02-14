@@ -4,5 +4,5 @@
 description: "protoc module"
 ```
 ```Dockerfile
-RUN apt install -y protobuf-compiler
+RUN apt-get update -y && apt-get upgrade -y && apt install -y protobuf-compiler
 ```

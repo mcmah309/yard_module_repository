@@ -26,7 +26,7 @@ VOLUME /dev/bus/usb \
 
 RUN mkdir -p $FLUTTER_HOME \
 ## Base linux config
-    && apt-get update \
+    && apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests ca-certificates \
     && update-ca-certificates \

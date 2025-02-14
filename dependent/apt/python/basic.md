@@ -4,6 +4,6 @@
 description: "python module with just the interpreter"
 ```
 ```Dockerfile
-RUN apt install -y python3 \
+RUN apt-get update -y && apt-get upgrade -y && apt install -y python3 \
     && ln -s /usr/bin/python3 /usr/bin/python
 ```

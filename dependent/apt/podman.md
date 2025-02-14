@@ -14,7 +14,7 @@ args:
 # - some containers may need args like `--net=host` on the inside and outside container
 
 
-RUN apt install -y podman \
+RUN apt-get update -y && apt-get upgrade -y && apt install -y podman \
     && tee /etc/containers/registries.conf > /dev/null <<EOF
 [registries]
 [registries.block]
