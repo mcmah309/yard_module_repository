@@ -12,7 +12,7 @@ apt-get install -y hstr
 apt-get install -y direnv
 # Cli tools
 apt-get install -y fd-find
-apt-get install -y sd
+apt-get install -y rust-sd
 apt-get install -y bat
 apt-get install -y ripgrep
 apt-get install -y fzf
