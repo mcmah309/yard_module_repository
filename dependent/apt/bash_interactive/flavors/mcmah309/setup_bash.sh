@@ -11,7 +11,7 @@ apt-get install -y hstr
 # Env
 apt-get install -y direnv
 # Cli tools
-apt-get install -y fd-find
+apt-get install -y rust-fd-find
 apt-get install -y rust-sd
 apt-get install -y bat
 apt-get install -y ripgrep
