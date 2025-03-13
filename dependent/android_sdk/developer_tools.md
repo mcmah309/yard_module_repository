@@ -4,8 +4,11 @@
 description: "Android utils"
 args:
   optional:
-    - android_platform
-    - android_build_tools
+    - platform
+    - build_tools
+    - ndk
+    - cmake
+    - include_emulator
     - include_volumes
 ```
 ```Dockerfile
@@ -16,28 +19,46 @@ args:
 
 # https://developer.android.com/tools/releases/platforms
 # e.g. "android-34"
-ARG android_platform={{ android_platform | default (value="android-34") }} 
+ARG platform={{ platform | default (value="android-35") }} 
 # https://developer.android.com/tools/releases/build-tools
 # e.g. "34.0.0"
-ARG android_build_tools={{ android_build_tools | default (value="34.0.0") }}
+ARG build_tools={{ build_tools | default (value="35.0.1") }}
+# https://developer.android.com/ndk/downloads
+ARG ndk={{ ndk | default (value="28.0.13004108") }}
+# https://cmake.org/download/ (also check `sdkmanager --list`)
+ARG cmake={{ cmake | default (value="3.31.6") }}
+
 
 # Update the SDK manager and install necessary Android SDK components https://developer.android.com/tools/sdkmanager
 RUN sdkmanager --update \
     && sdkmanager \
         # Install the Android SDK for the specified platform version (API level).
-        "platforms;${android_platform}" \
+        "platforms;${platform}" \
         # Install platform-tools like adb (Android Debug Bridge)
         # This appear to not take a version
         "platform-tools" \
         # Install the specified version of build tools for compiling Android apps
-        "build-tools;${android_build_tools}" \
+        "build-tools;${build_tools}" \
         # Install the latest version of command-line tools for general SDK management tasks
-        "cmdline-tools;latest"
+        "cmdline-tools;latest" \
         ## Extra
         # Install the latest version of the NDK (Native Development Kit) for compiling native code. Cant use "latest" here
-        #"ndk;26.2.11394342"
+        "ndk;${ndk}" \
         # Install the latest version of CMake. Cant use "latest" here
-        #"cmake;3.22.1"
+        "cmake;${cmake}"
+
+ENV PATH ${PATH}:${ANDROID_HOME}/emulator
+ENV ANDROID_NDK_HOME ${ANDROID_HOME}/ndk/${ndk}
+# For older envs
+ENV NDK_HOME ${ANDROID_NDK_HOME}
+
+{% if include_emulator %}
+# `adb kill-server` may be needed.
+# `adb start-server` may be needed. `QT_QPA_PLATFORM=` for selecting platform
+# Run emulator e.g. `emulator -avd pixel_7_33 -no-audio`
+RUN sdkmanager "system-images;${platform};google_apis;x86_64" "emulator" \
+  && avdmanager create avd -n pixel_7 -k "system-images;${platform};google_apis;x86_64" --device "pixel_7"
+{% endif %}
 
 {% if include_volumes %}
 VOLUME ["/root/.gradle/caches", "/opt/android-sdk"]
