@@ -19,12 +19,12 @@ args:
 
 # https://developer.android.com/tools/releases/platforms
 # e.g. "android-34"
-ARG platform={{ platform | default (value="android-35") }} 
+ARG platform={{ platform | default (value="android-34") }} 
 # https://developer.android.com/tools/releases/build-tools
 # e.g. "34.0.0"
-ARG build_tools={{ build_tools | default (value="35.0.1") }}
+ARG build_tools={{ build_tools | default (value="34.0.0") }}
 # https://developer.android.com/ndk/downloads
-ARG ndk={{ ndk | default (value="28.0.13004108") }}
+ARG ndk={{ ndk | default (value="27.2.12479018") }}
 # https://cmake.org/download/ (also check `sdkmanager --list`)
 ARG cmake={{ cmake | default (value="3.31.6") }}
 
