@@ -4,7 +4,7 @@
 description: "Ruby module"
 ```
 ```Dockerfile
-RUN apt-get update -y && apt-get upgrade -y && apt-get install ruby-full build-essential zlib1g-dev
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y ruby-full build-essential zlib1g-dev
 ENV GEM_HOME ${HOME}/gems
 ENV PATH ${PATH}:${HOME}/gems/bin
 ```
