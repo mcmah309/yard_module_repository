@@ -9,6 +9,8 @@ args:
 ```Dockerfile
 FROM ubuntu:{{ version | default (value="latest") }}
 
+ENV HOME ${HOME:-/root}
+
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests ca-certificates \

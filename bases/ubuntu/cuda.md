@@ -6,6 +6,8 @@ description: "Ubuntu module with cuda."
 ```Dockerfile
 FROM nvidia/cuda:12.6.3-cudnn-devel-ubuntu24.04
 
+ENV HOME ${HOME:-/root}
+
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests ca-certificates \

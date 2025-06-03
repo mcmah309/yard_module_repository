@@ -9,6 +9,8 @@ args:
 ```Dockerfile
 FROM alpine:{{ version | default (value="latest") }}
 
+ENV HOME ${HOME:-/root}
+
 RUN apk update \
     && apk upgrade \
     && apk add --no-cache ca-certificates \
