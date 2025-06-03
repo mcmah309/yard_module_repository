@@ -1,10 +1,11 @@
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
-description: "Podman in Podman"
-args:
-  optional:
-    - include_volumes
+description: |
+  Podman in Podman.
+
+  Volumes:
+  - /var/lib/containers #  Root podman containers location. (For users ~/.local/share/containers)
 ```
 ```Dockerfile
 # Podman in Podman
@@ -26,9 +27,4 @@ registries = []
 [registries.search]
 registries = ["docker.io", "quay.io"]
 EOF
-
-# Root podman containers location. (For users ~/.local/share/containers)
-{% if include_volumes %}
-VOLUME /var/lib/containers
-{% endif %}
 ```

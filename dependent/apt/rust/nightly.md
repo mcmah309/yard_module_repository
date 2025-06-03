@@ -1,10 +1,12 @@
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
-description: "Nightly rust module"
-args:
-  optional:
-    - include_volumes
+description: |
+    Nightly rust module
+
+    Volumes:
+    - /usr/local/rustup
+    - /usr/local/cargo
 ```
 ```Dockerfile
 # Based off: https://github.com/rust-lang/docker-rust/blob/9f287282d513a84cb7c7f38f197838f15d37b6a9/nightly/bookworm/slim/Dockerfile
@@ -47,8 +49,4 @@ RUN set -eux; \
         ;
     # Make sure to remove trailing `\` when you copy over a new version.
     # rm -rf /var/lib/apt/lists/*;
-
-{% if include_volumes %}
-VOLUME /usr/local/rustup /usr/local/cargo
-{% endif %}
 ```

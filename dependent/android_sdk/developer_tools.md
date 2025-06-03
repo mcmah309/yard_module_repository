@@ -1,7 +1,12 @@
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
-description: "Android utils"
+description: |
+  Android utils.
+  
+  Volumes:
+  - ${HOME:-/root}/.gradle/caches
+  - /opt/android-sdk
 args:
   optional:
     - platform
@@ -9,7 +14,6 @@ args:
     - ndk
     - cmake
     - include_emulator
-    - include_volumes
 ```
 ```Dockerfile
 # https://docs.flutter.dev/reference/supported-platforms
@@ -58,9 +62,5 @@ ENV NDK_HOME ${ANDROID_NDK_HOME}
 # Run emulator e.g. `emulator -avd pixel_7_33 -no-audio`
 RUN sdkmanager "system-images;${platform};google_apis;x86_64" "emulator" \
   && avdmanager create avd -n pixel_7 -k "system-images;${platform};google_apis;x86_64" --device "pixel_7"
-{% endif %}
-
-{% if include_volumes %}
-VOLUME ["/root/.gradle/caches", "/opt/android-sdk"]
 {% endif %}
 ```

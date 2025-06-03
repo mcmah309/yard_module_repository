@@ -1,11 +1,15 @@
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
-description: "flutter module"
+description: |
+    Flutter module
+
+    Volumes:
+    - /dev/bus/usb # debugging on real device
+    - ${HOME:-/root}/.pub-cache # Dart pub cache
 args:
   optional:
     - flutter_version
-    - include_volumes
 ```
 ```Dockerfile
 ARG flutter_ver={{ flutter_version | default (value="3.27.3") }}
@@ -16,13 +20,6 @@ ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin:/roo
 
 # Needed for linux, sets x11 to use the first display, use `export GDK_BACKEND=wayland` to use wayland
 ENV DISPLAY=:0
-
-{% if include_volumes %}
-# debugging on real device
-VOLUME /dev/bus/usb \
-# Dart pub cache
-/root/.pub-cache
-{% endif %}
 
 RUN mkdir -p $FLUTTER_HOME \
 ## Base linux config
