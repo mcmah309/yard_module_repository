@@ -4,7 +4,7 @@
 description: "Dioxus. Also depends on cargo being installed."
 args:
     optional:
-    - version # e.g. v0.6.0-alpha.4
+    - version # e.g. `0.6.0-alpha.4` do not include the `v`
 ```
 ```Dockerfile
 # From: https://dioxuslabs.com/learn/0.6/getting_started
