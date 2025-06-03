@@ -1,7 +1,7 @@
 #!/usr/bin/env bash 
 set -euo pipefail
 
-touch /root/.bash_history
+touch ${HOME:-/root}/.bash_history
 
 apt-get update -y && apt-get upgrade -y
 # PS1
@@ -18,9 +18,9 @@ apt-get install -y ripgrep
 apt-get install -y fzf
 apt-get install -y curl
 
-cat > "/root/.bashrc" <<- 'EOM'
+cat > "${HOME:-/root}/.bashrc" <<- 'EOM'
 # ensure synchronization between bash memory and history file
-export PROMPT_COMMAND="history -a; history -n; export HISTFILE=/root/.bash_history"
+export PROMPT_COMMAND="history -a; history -n; export HISTFILE=${HOME:-/root}/.bash_history"
 
 shopt -s histappend # history list is appended to the file named by the value of the HISTFILE variable when the shell exits, rather than overwriting the file
 shopt -s cmdhist # Saves multi-line commands in the history as a single entry, instead of splitting them into multiple lines.
