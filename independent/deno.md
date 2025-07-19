@@ -7,7 +7,7 @@ args:
         - version # e.g. `1.0.1`
 ```
 ```Dockerfile
-RUN curl -fsSL https://deno.land/install.sh | sh
+RUN curl -fsSL https://deno.land/install.sh | sh -s -- --yes
 {% if version %}
 RUN deno upgrade --version {{ version }}
 {% endif %}
