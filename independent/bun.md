@@ -8,8 +8,8 @@ args:
 ```
 ```Dockerfile
 {% if version %}
-RUN curl -fsSL https://bun.com/install | bash -s "{{ version }}"
+RUN apt-get install curl && curl -fsSL https://bun.com/install | bash -s "{{ version }}"
 {% else %}
-RUN curl -fsSL https://bun.sh/install | bash
+RUN apt-get install curl && curl -fsSL https://bun.sh/install | bash
 {% endif %}
 ```
