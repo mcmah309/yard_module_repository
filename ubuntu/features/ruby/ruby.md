@@ -7,7 +7,9 @@ description: "Ruby module"
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
-    ruby-full build-essential zlib1g-dev \
+    ruby-full \
+    build-essential \
+    zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 ENV GEM_HOME ${HOME:-/root}/gems
 ENV PATH ${PATH}:${HOME:-/root}/gems/bin

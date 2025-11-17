@@ -11,12 +11,11 @@ RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
     curl \
+    && rm -rf /var/lib/apt/lists/*
     # set to 4, 5, 6, ... as needed
-    && v={{ version | default (value="23") }} \
+RUN v={{ version | default (value="24") }} \
     && curl -sL https://deb.nodesource.com/setup_$v.x | bash - \
-    && apt-get install -y nodejs \
     && node -v \
     && npm -v \
     && npx -v
-    && rm -rf /var/lib/apt/lists/*
 ```

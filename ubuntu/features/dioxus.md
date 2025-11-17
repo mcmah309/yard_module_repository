@@ -20,7 +20,7 @@ RUN apt-get update -y \
     libssl-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev \
-    && cargo install cargo-binstall \
-    && cargo binstall dioxus-cli {% if version %} --version {{version}} --force {% endif %} \
-    && rm -rf /var/lib/apt/lists/* 
+    && rm -rf /var/lib/apt/lists/*
+RUN cargo install cargo-binstall \
+    && cargo binstall dioxus-cli {% if version %} --version {{version}} --force {% endif %}
 ```

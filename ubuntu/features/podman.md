@@ -19,8 +19,8 @@ RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
     podman \
+    && rm -rf /var/lib/apt/lists/* \
     && tee /etc/containers/registries.conf > /dev/null <<EOF
-    && rm -rf /var/lib/apt/lists/*
 [registries]
 [registries.block]
 registries = []

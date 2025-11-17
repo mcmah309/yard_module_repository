@@ -11,9 +11,6 @@ RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
     curl \
-    && curl -fsSL https://deno.land/install.sh | sh -s -- --yes \
-    {% if version %}
-    && deno upgrade --version {{ version }} \
-    {% endif %}
     && rm -rf /var/lib/apt/lists/*
+RUN curl -fsSL https://deno.land/install.sh | sh -s -- --yes {% if version %} && deno upgrade --version {{ version }} {% endif %}
 ```

@@ -10,6 +10,8 @@ description: "Essential rust packages adjacent like openssl"
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
-    libssl-dev libasound2-dev pkg-config \
+    libssl-dev \
+    libasound2-dev \
+    pkg-config \
     && rm -rf /var/lib/apt/lists/*
 ```

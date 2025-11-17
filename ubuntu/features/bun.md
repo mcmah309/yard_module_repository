@@ -10,6 +10,7 @@ args:
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
-    && curl -fsSL https://bun.com/install | bash {% if version %} -s "{{ version }}" {% endif %} \
+    curl \
     && rm -rf /var/lib/apt/lists/*
+RUN curl -fsSL https://bun.com/install | bash {% if version %} -s "{{ version }}" {% endif %}
 ```

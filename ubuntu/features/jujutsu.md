@@ -13,15 +13,18 @@ RUN apt-get update -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
     curl \
     {% if version %}
-    && curl -L -o jj.tar.gz https://github.com/jj-vcs/jj/releases/download/{{ version }}/jj-{{ version }}-x86_64-unknown-linux-musl.tar.gz \
-    {% else %}
     jq \
-    && DOWNLOAD_URL=$(curl -s https://api.github.com/repos/jj-vcs/jj/releases/latest | jq -r '.assets[] | select(.name | test("x86_64-unknown-linux-musl")) | .browser_download_url') \
+    {% else %}
+    && rm -rf /var/lib/apt/lists/*
+RUN \
+    {% if version %}
+    curl -L -o jj.tar.gz https://github.com/jj-vcs/jj/releases/download/{{ version }}/jj-{{ version }}-x86_64-unknown-linux-musl.tar.gz \
+    {% else %}
+    DOWNLOAD_URL=$(curl -s https://api.github.com/repos/jj-vcs/jj/releases/latest | jq -r '.assets[] | select(.name | test("x86_64-unknown-linux-musl")) | .browser_download_url') \
     && curl -L -o jj.tar.gz "$DOWNLOAD_URL" \
     {% endif %}
     && tar -xvzf jj.tar.gz \
     && mv jj /usr/local/bin/ \
     && rm jj.tar.gz \
-    && jj --version \
-    && rm -rf /var/lib/apt/lists/*
+    && jj --version
 ```
