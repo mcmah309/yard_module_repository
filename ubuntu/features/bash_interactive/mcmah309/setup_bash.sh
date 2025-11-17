@@ -79,9 +79,4 @@ alias l='ls -lah'
 alias fd=fdfind
 
 eval "$(direnv hook bash)"
-
-# activate shortcust
-a() {
-    eval "$(activate -e "$@")";
-}
 EOM
