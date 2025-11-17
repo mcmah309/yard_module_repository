@@ -3,16 +3,15 @@ set -euo pipefail
 
 touch ${HOME:-/root}/.bash_history
 
-# `bsdmainutils` has `colrm`
+# Note: `bsdmainutils` contains `colrm`
 apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
-    # colrm
     bsdmainutils \
-    # History
     hstr \
+    \
     direnv \
-    # Cli tools
+    \
     fd-find \
     sd \
     bat \
