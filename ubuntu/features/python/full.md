@@ -13,7 +13,7 @@ RUN apt-get update -y \
     python3-full \
     python3-dev \
     pipx \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
     && pipx ensurepath \
-    && ln -s /usr/bin/python3 /usr/bin/python \
+    && ln -s /usr/bin/python3 /usr/bin/python
 ```
