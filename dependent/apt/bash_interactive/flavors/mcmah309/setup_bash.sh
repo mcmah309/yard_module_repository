@@ -36,15 +36,41 @@ shopt -s nocasematch  # Enable case-insensitive matching, e.g. `[[ $filename == 
 shopt -s expand_aliases # Allow aliases in non-interactive (scripts)
 # shopt -s sourcepath # Allow searching PATH for `source ...` when a script cannot be found
 
+## PS1
+jj_or_git() {
+    local name=""
+    local color=""
 
-function git_branch() {
-    branch=$(git branch 2>/dev/null | grep '^*' | colrm 1 2 || echo "")
-    if [ ! -z "$branch" ]; then
-        echo " ($branch)"
+    # Try jujutsu first
+    if command -v jj >/dev/null 2>&1; then
+        name=$(jj log -r @ --no-graph --template '
+            coalesce(
+                self.local_bookmarks().map(|b| b.name()).join("\n"),
+                self.change_id().shortest().prefix()
+            )
+        ' 2>/dev/null | head -n1)
+
+        if [ -n "$name" ]; then
+            color="\033[35m"  # Purple for jj
+        fi
+    fi
+
+    # Fallback to git if jj fails or returns empty
+    if [ -z "$name" ] && command -v git >/dev/null 2>&1; then
+        name=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
+        if [ -n "$name" ]; then
+            color="\033[34m"  # Blue for git
+        fi
+    fi
+
+    # Print with parentheses and color if we have something
+    if [ -n "$name" ]; then
+        echo -e " $color($name)"
     fi
 }
-# PS1 is the prompt (e.g. "user@host:directory (branch)$ ")
-export PS1="\[\033[36m\]\u@c-\h\[\033[00m\]:\[\033[33m\]\w\[\033[32m\]\$(git_branch)\[\033[00m\]\$ "
+
+# PS1 is the prompt (e.g. "user@c-host:directory (branch)$ "). "c-" for container
+export PS1="\[\033[36m\]\u@c-\h\[\033[00m\]:\[\033[33m\]\w\$(jj_or_git)\033[00m\$ "
 
 ### For hstr
 alias hh=hstr                    # hh to be alias for hstr
