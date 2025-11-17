@@ -14,7 +14,7 @@ RUN apt-get update -y \
     curl \
     {% if version %}
     jq \
-    {% else %}
+    {% endif %}
     && rm -rf /var/lib/apt/lists/*
 RUN \
     {% if version %}
