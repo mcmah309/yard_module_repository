@@ -14,7 +14,7 @@ RUN apt-get update -y \
     libssl-dev \
     pkg-config \
     curl \
-    rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 RUN \
 {% if version %}
     curl -LsSf https://astral.sh/uv/{{ version }}/install.sh | sh \
