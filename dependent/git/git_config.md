@@ -12,6 +12,6 @@ args:
     - email
 ```
 ```Dockerfile
-RUN git config --global user.name {{ user_name }} && \
-    git config --global user.email {{ email }}
+RUN git config --global user.name {{ user_name }} \
+    && git config --global user.email {{ email }}
 ```

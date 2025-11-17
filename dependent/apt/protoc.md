@@ -4,5 +4,9 @@
 description: "protoc module"
 ```
 ```Dockerfile
-RUN apt-get update -y && apt-get upgrade -y && apt install -y protobuf-compiler
+RUN apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends --no-install-suggests \
+    protobuf-compiler \
+    && rm -rf /var/lib/apt/lists/*
 ```

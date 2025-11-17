@@ -7,12 +7,16 @@ args:
         - version # e.g. 0.5.18
 ```
 ```Dockerfile
-RUN apt-get update -y && apt-get upgrade -y && apt install -y build-essential libssl-dev pkg-config curl \
+RUN apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends --no-install-suggests \
+    build-essential libssl-dev pkg-config curl \
     {% if version %}
     && curl -LsSf https://astral.sh/uv/{{ version }}/install.sh | sh \
     {% else %}
     && curl -LsSf https://astral.sh/uv/install.sh | sh \
     {% endif %}
     && . $HOME/.local/bin/env \
-    && uv tool install mypy
+    && uv tool install mypy \
+    && rm -rf /var/lib/apt/lists/*
 ```

@@ -3,20 +3,23 @@ set -euo pipefail
 
 touch ${HOME:-/root}/.bash_history
 
-apt-get update -y && apt-get upgrade -y
-# PS1
-apt-get install -y bsdmainutils # colrm
-# History
-apt-get install -y hstr
-# Env
-apt-get install -y direnv
-# Cli tools
-apt-get install -y fd-find
-apt-get install -y sd
-apt-get install -y bat
-apt-get install -y ripgrep
-apt-get install -y fzf
-apt-get install -y curl
+# `bsdmainutils` has `colrm`
+apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends --no-install-suggests \
+    # colrm
+    bsdmainutils \
+    # History
+    hstr \
+    direnv \
+    # Cli tools
+    fd-find \
+    sd \
+    bat \
+    ripgrep \
+    fzf \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
 cat > "${HOME:-/root}/.bashrc" <<- 'EOM'
 # ensure synchronization between bash memory and history file

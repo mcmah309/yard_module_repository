@@ -94,5 +94,6 @@ RUN mkdir -p $FLUTTER_HOME \
 
 ## Need for packages
 # Needed by path provider find the write paths for the linux os
-    && apt-get install xdg-user-dirs
+    && apt-get install xdg-user-dirs \
+    && rm -rf /var/lib/apt/lists/*
 ```

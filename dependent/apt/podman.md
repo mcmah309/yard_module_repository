@@ -15,8 +15,12 @@ description: |
 # - some containers may need args like `--net=host` on the inside and outside container
 
 
-RUN apt-get update -y && apt-get upgrade -y && apt install -y podman \
+RUN apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends --no-install-suggests \
+    podman \
     && tee /etc/containers/registries.conf > /dev/null <<EOF
+    && rm -rf /var/lib/apt/lists/*
 [registries]
 [registries.block]
 registries = []

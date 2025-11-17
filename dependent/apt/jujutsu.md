@@ -7,14 +7,18 @@ args:
         - version # e.g `v0.35.0`
 ```
 ```Dockerfile
-{% if version %}
-RUN apt-get update -y && apt-get install -y curl \
+
+RUN apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends --no-install-suggests \
+    curl \
+    {% if version %}
     && curl -L -o jj.tar.gz https://github.com/jj-vcs/jj/releases/download/{{ version }}/jj-{{ version }}-x86_64-unknown-linux-musl.tar.gz \
-{% else %}
-RUN apt-get update -y && apt-get install -y curl jq \
-  && DOWNLOAD_URL=$(curl -s https://api.github.com/repos/jj-vcs/jj/releases/latest | jq -r '.assets[] | select(.name | test("x86_64-unknown-linux-musl")) | .browser_download_url') \
-  && curl -L -o jj.tar.gz "$DOWNLOAD_URL" \
-{% endif %}
+    {% else %}
+    jq \
+    && DOWNLOAD_URL=$(curl -s https://api.github.com/repos/jj-vcs/jj/releases/latest | jq -r '.assets[] | select(.name | test("x86_64-unknown-linux-musl")) | .browser_download_url') \
+    && curl -L -o jj.tar.gz "$DOWNLOAD_URL" \
+    {% endif %}
     && tar -xvzf jj.tar.gz \
     && mv jj /usr/local/bin/ \
     && rm jj.tar.gz \

@@ -4,8 +4,12 @@
 description: "python module with most of the needed tools for development"
 ```
 ```Dockerfile
-RUN apt-get update -y && apt-get upgrade -y && apt install -y build-essential libssl-dev pkg-config \
+RUN apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends --no-install-suggests \
+    build-essential libssl-dev pkg-config \
     && apt install -y python3-full python3-dev pipx \
     && pipx ensurepath \
-    && ln -s /usr/bin/python3 /usr/bin/python
+    && ln -s /usr/bin/python3 /usr/bin/python \
+    && rm -rf /var/lib/apt/lists/*
 ```

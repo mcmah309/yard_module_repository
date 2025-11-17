@@ -70,7 +70,7 @@ RUN set -eux; \
     apt-get remove -y --auto-remove \
         wget \
         ; \
-    # rm -rf /var/lib/apt/lists/*; \ # Make sure to comment this out when copying over a new version in this file.
+    rm -rf /var/lib/apt/lists/*; \
     \
     rustup --version; \
     cargo --version; \
