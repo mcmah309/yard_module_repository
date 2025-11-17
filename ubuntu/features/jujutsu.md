@@ -22,5 +22,6 @@ RUN apt-get update -y \
     && tar -xvzf jj.tar.gz \
     && mv jj /usr/local/bin/ \
     && rm jj.tar.gz \
-    && jj --version
+    && jj --version \
+    && rm -rf /var/lib/apt/lists/*
 ```
