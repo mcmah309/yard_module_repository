@@ -39,9 +39,7 @@ shopt -s expand_aliases # Allow aliases in non-interactive (scripts)
 ## PS1
 jj_or_git() {
     local name=""
-    local color=""
 
-    # Try jujutsu first
     if command -v jj >/dev/null 2>&1; then
         name=$(jj log -r @ --no-graph --template '
             coalesce(
@@ -49,28 +47,19 @@ jj_or_git() {
                 self.change_id().shortest().prefix()
             )
         ' 2>/dev/null | head -n1)
-
-        if [ -n "$name" ]; then
-            color="\033[35m"  # Purple for jj
-        fi
     fi
 
-    # Fallback to git if jj fails or returns empty
     if [ -z "$name" ] && command -v git >/dev/null 2>&1; then
         name=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
-        if [ -n "$name" ]; then
-            color="\033[34m"  # Blue for git
-        fi
     fi
 
-    # Print with parentheses and color if we have something
     if [ -n "$name" ]; then
-        echo -e " $color($name)"
+        echo -e " (${name})"
     fi
 }
 
 # PS1 is the prompt (e.g. "user@c-host:directory (branch)$ "). "c-" for container
-export PS1="\[\033[36m\]\u@c-\h\[\033[00m\]:\[\033[33m\]\w\$(jj_or_git)\[\033[00m\]\$ "
+export PS1="\[\033[36m\]\u@c-\h\[\033[00m\]:\[\033[33m\]\w\[\033[32m\]\$(jj_or_git)\[\033[00m\]\$ "
 
 ### For hstr
 alias hh=hstr                    # hh to be alias for hstr
