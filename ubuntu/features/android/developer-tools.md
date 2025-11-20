@@ -10,7 +10,7 @@ description: |
 args:
   optional:
     - platform
-    - build-tools
+    - build_tools
     - ndk
     - cmake
     - include_emulator
@@ -42,7 +42,7 @@ RUN sdkmanager --update \
         # This appear to not take a version
         "platform-tools" \
         # Install the specified version of build tools for compiling Android apps
-        "build-tools;${build-tools}" \
+        "build-tools;${build_tools}" \
         # Install the latest version of command-line tools for general SDK management tasks
         "cmdline-tools;latest" \
         ## Extra

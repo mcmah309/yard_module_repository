@@ -4,7 +4,7 @@
 description: "c development module"
 args:
     optional:
-        - clang-version
+        - clang_version
 ```
 ```Dockerfile
 RUN apt-get update -y \
