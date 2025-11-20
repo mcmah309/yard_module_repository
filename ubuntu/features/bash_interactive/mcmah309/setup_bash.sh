@@ -61,7 +61,7 @@ jj_or_git() {
 }
 
 # PS1 is the prompt (e.g. "user@c-host:directory (branch)$ "). "c-" for container
-export PS1="\[\033[36m\]\u@c-\h\[\033[00m\]:\[\033[33m\]\w\[\033[32m\]\$(jj_or_git)\[\033[00m\]\$ "
+export PS1="\[\033[36m\]\u@📦(\h)\[\033[00m\]:\[\033[33m\]\w\[\033[32m\]\$(jj_or_git)\[\033[00m\]\$ "
 
 ### For hstr
 alias hh=hstr                    # hh to be alias for hstr
