@@ -39,6 +39,6 @@ RUN \
 RUN \
     git config --global user.name {{ user_name }} \
     && git config --global user.email {{ email }} \
-    && jj config set user.name {{ user_name }} \
-    && jj config set user.email {{ email }}
+    && jj config set --user user.name {{ user_name }} \
+    && jj config set --user user.email {{ email }}
 ```
