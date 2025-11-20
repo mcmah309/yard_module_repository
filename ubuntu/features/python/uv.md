@@ -21,6 +21,5 @@ RUN \
 {% else %}
     curl -LsSf https://astral.sh/uv/install.sh | sh \
 {% endif %}
-    && . $HOME/.local/bin/env \
-    && uv tool install mypy
+    && . $HOME/.local/bin/env
 ```
