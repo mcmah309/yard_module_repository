@@ -1,8 +1,15 @@
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
-description: "jujustu version control (jj). https://github.com/jj-vcs/jj/releases"
+description: |
+    jujustu version control (jj). https://github.com/jj-vcs/jj/releases
+
+    Volumes:
+    - ${HOME:-/root}:/.ssh
 args:
+    required:
+        - user_name
+        - email
     optional:
         - version # e.g `v0.35.0`
 ```
@@ -11,6 +18,8 @@ args:
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
+    git \
+    openssh-client \
     curl \
     {% if not version %}
     jq \
@@ -27,4 +36,9 @@ RUN \
     && mv jj /usr/local/bin/ \
     && rm jj.tar.gz \
     && jj --version
+RUN \
+    git config --global user.name {{ user_name }} \
+    && git config --global user.email {{ email }} \
+    && jj config set user.name {{ user_name }} \
+    && jj config set user.email {{ email }}
 ```

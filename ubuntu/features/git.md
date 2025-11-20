@@ -1,12 +1,24 @@
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
-description: "git module"
+description: |
+  git module
+
+  Volumes:
+  - ${HOME:-/root}:/.ssh
+args:
+  required:
+    - user_name
+    - email
 ```
 ```Dockerfile
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
+    openssh-client \
     git \
     && rm -rf /var/lib/apt/lists/*
+RUN \
+    git config --global user.name {{ user_name }} \
+    && git config --global user.email {{ email }}
 ```
