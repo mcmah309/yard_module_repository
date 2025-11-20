@@ -8,10 +8,10 @@ description: |
   - ${HOME:-/root}:/.ssh
 args:
   required:
-    - user_name
+    - user-name
     - email
 ```
 ```Dockerfile
-RUN git config --global user.name {{ user_name }} \
+RUN git config --global user.name {{ user-name }} \
     && git config --global user.email {{ email }}
 ```
