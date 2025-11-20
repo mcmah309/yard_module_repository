@@ -1,7 +1,7 @@
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
-description: "c clang development module"
+description: "clang development module"
 args:
     optional:
         - clang_version
@@ -36,6 +36,5 @@ RUN apt-get update -y \
     lldb \
     lld \
 {% endif %}
-    valgrind \
     && rm -rf /var/lib/apt/lists/*
 ```
