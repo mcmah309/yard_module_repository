@@ -26,7 +26,7 @@ args:
 ARG platform={{ platform | default (value="android-34") }} 
 # https://developer.android.com/tools/releases/build-tools
 # e.g. "34.0.0"
-ARG build-tools={{ build-tools | default (value="34.0.0") }}
+ARG build-tools={{ build_tools | default (value="34.0.0") }}
 # https://developer.android.com/ndk/downloads
 ARG ndk={{ ndk | default (value="27.2.12479018") }}
 # https://cmake.org/download/ (also check `sdkmanager --list`)
@@ -42,7 +42,7 @@ RUN sdkmanager --update \
         # This appear to not take a version
         "platform-tools" \
         # Install the specified version of build tools for compiling Android apps
-        "build-tools;${build_tools}" \
+        "build-tools;${build-tools}" \
         # Install the latest version of command-line tools for general SDK management tasks
         "cmdline-tools;latest" \
         ## Extra
