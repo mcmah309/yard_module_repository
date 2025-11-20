@@ -38,29 +38,39 @@ shopt -s nocasematch  # Enable case-insensitive matching, e.g. `[[ $filename == 
 shopt -s expand_aliases # Allow aliases in non-interactive (scripts)
 # shopt -s sourcepath # Allow searching PATH for `source ...` when a script cannot be found
 
-## PS1
 jj_or_git() {
     local name=""
 
-    if command -v jj >/dev/null 2>&1; then
+    # 1. Check if jj is installed AND if we are inside a jj root
+    if command -v jj >/dev/null 2>&1 && jj root >/dev/null 2>&1; then
         name=$(jj log -r @ --no-graph --template '
             coalesce(
                 self.local_bookmarks().map(|b| b.name()).join("\n"),
                 self.change_id().shortest().prefix()
             )
         ' 2>/dev/null | head -n1)
+        
+        # Use \001 (start non-printing) and \002 (end non-printing) for prompt colors
+        printf " \001\033[35m\002(%s)\001\033[00m\002" "$name"
+        return
     fi
 
-    if [ -z "$name" ] && command -v git >/dev/null 2>&1; then
-        name=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
-    fi
+    # 2. Fallback: Check if git is installed AND inside a git work tree
+    if command -v git >/dev/null 2>&1 && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        # Modern way to get branch name (cleaner than colrm)
+        name=$(git branch --show-current 2>/dev/null)
+        
+        # If detached head (no branch name), get the short hash
+        if [ -z "$name" ]; then
+            name=$(git rev-parse --short HEAD 2>/dev/null)
+        fi
 
-    if [ -n "$name" ]; then
-        echo -e " (${name})"
+        printf " \001\033[32m\002(%s)\001\033[00m\002" "$name"
+        return
     fi
 }
 
-# PS1 is the prompt (e.g. "user@c-host:directory (branch)$ "). "c-" for container
+# Prompt (e.g. "user@📦:directory (branch)$ ")
 export PS1="\[\033[36m\]\u@📦\[\033[00m\]:\[\033[33m\]\w\[\033[32m\]\$(jj_or_git)\[\033[00m\]\$ "
 
 ### For hstr
