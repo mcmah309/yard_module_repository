@@ -8,6 +8,7 @@ RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
     valgrind \
+    make \
     cmake \
     ninja-build \
     meson \

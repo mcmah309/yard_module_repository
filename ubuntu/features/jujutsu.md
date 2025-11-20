@@ -3,6 +3,8 @@
 
 description: |
     jujustu version control (jj). https://github.com/jj-vcs/jj/releases
+    
+    Also installs git since jj currently depends on git as the backend and some commands are not possible in jj alone.
 
     Volumes:
     - ${HOME:-/root}:/.ssh
