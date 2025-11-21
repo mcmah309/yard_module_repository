@@ -15,5 +15,7 @@ RUN apt-get update -y \
     binutils \
     # GCC, g++, dpkg-dev, and other standard build tools (optional but increases compatibility)
     build-essential \
+    # Documentation for libc
+    # manpages-dev \
     && rm -rf /var/lib/apt/lists/*
 ```
