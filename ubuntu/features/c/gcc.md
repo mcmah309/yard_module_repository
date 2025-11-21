@@ -27,13 +27,13 @@ RUN apt-get update -y \
     # Priority '100' should be high enough to override the 'build-essential' default
     && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-{{ version }} 100 \
     --slave /usr/bin/g++ g++ /usr/bin/g++-{{ version }} \
-    && update-alternatives --config gcc \
+    && update-alternatives --config gcc
 {% else %}
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
     build-essential \
     gdb \
-{% endif %}
     && rm -rf /var/lib/apt/lists/*
+{% endif %}
 ```
