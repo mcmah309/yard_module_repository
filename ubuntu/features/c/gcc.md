@@ -12,6 +12,7 @@ RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
     build-essential \
+    software-properties-common \
     gdb \
     # Add the Ubuntu Toolchain PPA for latest GCC versions
     && add-apt-repository ppa:ubuntu-toolchain-r/test -y \
