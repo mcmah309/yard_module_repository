@@ -15,7 +15,9 @@ RUN apt-get update -y \
     # set to 4, 5, 6, ... as needed
 RUN v={{ version | default (value="24") }} \
     && curl -sL https://deb.nodesource.com/setup_$v.x | bash - \
+    && apt install nodejs \
     && node -v \
     && npm -v \
-    && npx -v
+    && npx -v \
+    && rm -rf /var/lib/apt/lists/*
 ```
