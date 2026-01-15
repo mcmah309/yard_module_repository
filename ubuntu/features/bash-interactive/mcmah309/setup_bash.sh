@@ -71,7 +71,7 @@ jj_or_git() {
 }
 
 # Prompt (e.g. "user@📦:directory (branch)$ ")
-export PS1="\[\033[36m\]\u@📦\[\033[00m\]:\[\033[33m\]\w\[\033[32m\]\$(jj_or_git)\[\033[00m\]\$ "
+export PS1="\[\033[36m\]\u@\[📦\]\[\033[00m\]:\[\033[33m\]\w\[\033[32m\]\$(jj_or_git)\$ "
 
 ### For hstr
 alias hh=hstr                    # hh to be alias for hstr
