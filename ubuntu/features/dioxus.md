@@ -7,7 +7,7 @@ args:
     - version # e.g. `0.6.0-alpha.4` do not include the `v`
 ```
 ```Dockerfile
-# From: https://dioxuslabs.com/learn/0.6/getting_started
+# From: https://dioxuslabs.com/learn/0.7/getting_started
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
