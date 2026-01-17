@@ -20,5 +20,7 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/*
 RUN \
     git config --global user.name {{ user_name }} \
-    && git config --global user.email {{ email }}
+    && git config --global user.email {{ email }} \
+    # Make pull, checkout, and switch automatically update submodules
+    && git config --global submodule.recurse true
 ```
