@@ -14,5 +14,5 @@ RUN apt-get update -y \
     xz-utils \
     && rm -rf /var/lib/apt/lists/* \
     && curl -L https://github.com/marler8997/zigup/releases/latest/download/zigup-x86_64-linux.tar.gz | tar xz -C /usr/local/bin \
-    && /usr/local/bin/zigup {{ version | default (value="0.15.2") }} --install-dir /usr/local/bin
+    && /usr/local/bin/zigup {{ version | default (value="0.16.0") }} --install-dir /usr/local/bin
 ```
