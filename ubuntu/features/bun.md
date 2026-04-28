@@ -1,7 +1,7 @@
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mcmah309/containeryard/master/src/schemas/yard-module-schema.json
 
-description: "Deno"
+description: "Bun"
 args:
     optional:
         - version # e.g. `bun-v1.2.19`
