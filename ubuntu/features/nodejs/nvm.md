@@ -10,7 +10,7 @@ RUN apt-get update -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash \
-    && source ~/.bashrc \
+    && . ~/.bashrc \
     && nvm install --lts \
     && node -v && npm -v
 ```
