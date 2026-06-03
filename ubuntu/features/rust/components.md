@@ -7,5 +7,5 @@ args:
     - components
 ```
 ```Dockerfile
-RUN rustup component add {{ components | default (value="rustfmt") }}
+RUN rustup component add {{ components | default (value="rustfmt clippy") }}
 ```
