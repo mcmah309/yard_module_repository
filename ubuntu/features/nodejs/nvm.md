@@ -9,8 +9,10 @@ RUN apt-get update -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
     curl \
     && rm -rf /var/lib/apt/lists/*
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.5/install.sh | bash \
     && . ~/.bashrc \
     && nvm install --lts \
-    && node -v && npm -v
+    && node -v
+    && npm -v
+    && nvm alias default lts/*
 ```
