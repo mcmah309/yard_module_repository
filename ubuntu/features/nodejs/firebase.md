@@ -4,7 +4,7 @@
 description: "Firebase cli module. Needs Node.js."
 ```
 ```Dockerfile
-RUN { nvm use default 2>/dev/null || true; } && npm install -g firebase-tools
+RUN . ~/.bashrc  && { nvm use default 2>/dev/null || true; } && npm install -g firebase-tools
 ```
 
 Users can then run `firebase login` to setup for their project

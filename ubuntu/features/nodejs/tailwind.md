@@ -4,7 +4,7 @@
 description: "Tailwind cli"
 ```
 ```Dockerfile
-RUN { nvm use default 2>/dev/null || true; } && npm install -g tailwindcss @tailwindcss/cli
+RUN . ~/.bashrc  && { nvm use default 2>/dev/null || true; } && npm install -g tailwindcss @tailwindcss/cli
 ```
 
 https://tailwindcss.com/docs/installation/tailwind-cli

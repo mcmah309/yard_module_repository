@@ -4,5 +4,5 @@
 description: "pi coding agent"
 ```
 ```Dockerfile
-RUN { nvm use default 2>/dev/null || true; } && npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+RUN . ~/.bashrc  && { nvm use default 2>/dev/null || true; } && npm install -g --ignore-scripts @earendil-works/pi-coding-agent
 ```
