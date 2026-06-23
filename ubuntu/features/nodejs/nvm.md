@@ -14,5 +14,5 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.5/install.sh | b
     && nvm install --lts \
     && node -v \
     && npm -v \
-    && nvm alias default lts/*
+    && nvm alias default lts/* \
 ```
