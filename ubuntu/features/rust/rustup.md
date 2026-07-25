@@ -80,6 +80,6 @@ RUN set -eux; \
     cargo --version; \
     rustc --version;
 
-# Fix for installing other toolchains: https://github.com/rust-lang/rustup/issues/4198#issuecomment-5078174007
+# Fix for installing other toolchains. See for more: https://github.com/rust-lang/rustup/issues/4198#issuecomment-5078174007
 ENV RUSTUP_PERMIT_COPY_RENAME=1
 ```
