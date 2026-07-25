@@ -9,12 +9,13 @@ description: |
     - /usr/local/cargo
 ```
 ```Dockerfile
-# Based off: https://github.com/rust-lang/docker-rust/blob/78eddf7aaa7cb9dd12d6e95605301d8a9f74290e/nightly/bookworm/slim/Dockerfile
+# Based off: https://github.com/rust-lang/docker-rust/blob/b66cda4c654bc2f73a43a727563cf07cd26e9559/nightly/bookworm/slim/Dockerfile
 
+ARG RUST_VERSION=nightly
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
     PATH=/usr/local/cargo/bin:$PATH \
-    RUST_VERSION=nightly
+    RUST_VERSION=${RUST_VERSION}
 
 RUN set -eux; \
     \
