@@ -10,4 +10,4 @@ RUN apt-get update -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 RUN curl -fsSL https://gh.io/copilot-install | bash
-``
+```
