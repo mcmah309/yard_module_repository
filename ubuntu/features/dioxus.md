@@ -21,6 +21,6 @@ RUN apt-get update -y \
     libayatana-appindicator3-dev \
     librsvg2-dev \
     && rm -rf /var/lib/apt/lists/*
-RUN curl -L--proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash \
+RUN cargo install cargo-binstall --locked \
     && cargo binstall dioxus-cli {% if version %} --version {{version}} --force {% endif %}
 ```
