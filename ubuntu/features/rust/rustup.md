@@ -7,11 +7,14 @@ description: |
     Volumes:
     - /usr/local/rustup
     - /usr/local/cargo
+args:
+  optional:
+    - rust_version
 ```
 ```Dockerfile
 # Based off: https://github.com/rust-lang/docker-rust/blob/b66cda4c654bc2f73a43a727563cf07cd26e9559/nightly/bookworm/slim/Dockerfile
 
-ARG RUST_VERSION=nightly
+ARG RUST_VERSION={{ components | default (value="1.97.1") }}
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
     PATH=/usr/local/cargo/bin:$PATH \
