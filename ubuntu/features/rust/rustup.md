@@ -12,6 +12,9 @@ args:
     - rust_version # For nightly, use "nightly"
 ```
 ```Dockerfile
+# Fix https://github.com/rust-lang/rustup/issues/4198#issuecomment-5078174007
+ENV RUSTUP_PERMIT_COPY_RENAME=1
+
 # Based off: https://github.com/rust-lang/docker-rust/blob/b66cda4c654bc2f73a43a727563cf07cd26e9559/stable/bookworm/slim/Dockerfile
 
 ARG RUST_VERSION={{ components | default (value="1.97.1") }}
